@@ -6,38 +6,51 @@ public class HUD : CanvasLayer
     [Signal]
     public delegate void StartGame();
 
+    private Label message;
+    private ColorRect messageBox;
+
+    private Timer messageTimer;
+    private Button startButton;
+
+    public override void _Ready()
+    {
+        message = GetNode<Label>("Message");
+        messageTimer = GetNode<Timer>("MessageTimer");
+        messageBox = GetNode<ColorRect>("MessageBox");
+        startButton = GetNode<Button>("StartButton");
+    }
+
     public void ShowMessage(string text)
     {
-        var message = GetNode<Label>("Message");
         message.Text = text;
         message.Show();
-
-        GetNode<Timer>("MessageTimer").Start();
+        messageBox.Show();
+        messageTimer.Start();
     }
 
     async public void ShowGameOver()
     {
         ShowMessage("Game Over");
 
-        var messageTimer = GetNode<Timer>("MessageTimer");
         await ToSignal(messageTimer, "timeout");
 
-        var message = GetNode<Label>("Message");
         message.Text = "PvP arena";
         message.Show();
+        messageBox.Show();
 
         await ToSignal(GetTree().CreateTimer(1), "timeout");
-        GetNode<Button>("StartButton").Show();
+        startButton.Show();
     }
 
     public void OnStartButtonPressed()
     {
-        GetNode<Button>("StartButton").Hide();
+        startButton.Hide();
         EmitSignal("StartGame");
     }
 
     public void OnMessageTimerTimeout()
     {
-        GetNode<Label>("Message").Hide();
+        message.Hide();
+        messageBox.Hide();
     }
 }
