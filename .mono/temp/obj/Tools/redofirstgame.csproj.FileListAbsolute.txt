@@ -1,0 +1,5 @@
+C:\Users\Hillo\Documents\redofirstgame\.mono\temp\bin\Tools\redofirstgame.dll
+C:\Users\Hillo\Documents\redofirstgame\.mono\temp\bin\Tools\redofirstgame.pdb
+C:\Users\Hillo\Documents\redofirstgame\.mono\temp\obj\Tools\redofirstgame.csprojAssemblyReference.cache
+C:\Users\Hillo\Documents\redofirstgame\.mono\temp\obj\Tools\redofirstgame.dll
+C:\Users\Hillo\Documents\redofirstgame\.mono\temp\obj\Tools\redofirstgame.pdb
